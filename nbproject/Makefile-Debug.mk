@@ -12,19 +12,22 @@ MKDIR=mkdir
 CP=cp
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=
+CC=gcc412
 CCC=g++412
 CXX=g++412
 FC=
+AS=
 
 # Macros
-PLATFORM=FOR_MAYA-Linux-x86
+CND_PLATFORM=FOR_MAYA-Linux-x86
+CND_CONF=Debug
+CND_DISTDIR=dist
 
 # Include project Makefile
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Debug/${PLATFORM}
+OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
@@ -41,32 +44,42 @@ CXXFLAGS=
 # Fortran Compiler Flags
 FFLAGS=
 
+# Assembler Flags
+ASFLAGS=
+
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/autodesk/maya/lib -lOpenMaya -lFoundation
+LDLIBSOPTIONS=-L${MAYA_LOCATION}/maya/lib -lOpenMaya -lFoundation
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/libcurvesGen.so
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/FOR_MAYA-Linux-x86/libcurvesgen.so
 
-dist/Debug/${PLATFORM}/libcurvesGen.so: ${OBJECTFILES}
-	${MKDIR} -p dist/Debug/${PLATFORM}
-	${LINK.cc} -shared -o dist/Debug/${PLATFORM}/libcurvesGen.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+dist/Debug/FOR_MAYA-Linux-x86/libcurvesgen.so: ${OBJECTFILES}
+	${MKDIR} -p dist/Debug/FOR_MAYA-Linux-x86
+	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcurvesgen.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/curvesGenNode.o: curvesGenNode.cpp 
+${OBJECTDIR}/curvesGenNode.o: nbproject/Makefile-${CND_CONF}.mk curvesGenNode.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -g -DLINUX -D_BOOL -DINCLUDE_IOSTREAM -DREQUIRE_IOSTREAM -I/usr/autodesk/maya/include -fPIC  -o ${OBJECTDIR}/curvesGenNode.o curvesGenNode.cpp
+	${RM} $@.d
+	$(COMPILE.cc) -g -DLINUX -D_BOOL -DINCLUDE_IOSTREAM -DREQUIRE_IOSTREAM -I${MAYA_LOCATION}/maya/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/curvesGenNode.o curvesGenNode.cpp
 
-${OBJECTDIR}/mainPlugin.o: mainPlugin.cpp 
+${OBJECTDIR}/mainPlugin.o: nbproject/Makefile-${CND_CONF}.mk mainPlugin.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -g -DLINUX -D_BOOL -DINCLUDE_IOSTREAM -DREQUIRE_IOSTREAM -I/usr/autodesk/maya/include -fPIC  -o ${OBJECTDIR}/mainPlugin.o mainPlugin.cpp
+	${RM} $@.d
+	$(COMPILE.cc) -g -DLINUX -D_BOOL -DINCLUDE_IOSTREAM -DREQUIRE_IOSTREAM -I${MAYA_LOCATION}/maya/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/mainPlugin.o mainPlugin.cpp
 
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
-.clean-conf:
+.clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/Debug
-	${RM} dist/Debug/${PLATFORM}/libcurvesGen.so
+	${RM} dist/Debug/FOR_MAYA-Linux-x86/libcurvesgen.so
 
 # Subprojects
 .clean-subprojects:
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+include .dep.inc

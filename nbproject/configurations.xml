@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="51">
+<configurationDescriptor version="62">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -19,8 +19,8 @@
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
-      <itemPath>connectCurves.py</itemPath>
       <itemPath>Makefile</itemPath>
+      <itemPath>connectCurves.py</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -32,20 +32,20 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <ccCompilerTool>
-          <includeDirectories>
-            <directoryPath>/usr/autodesk/maya/include</directoryPath>
-          </includeDirectories>
+        <ccTool>
+          <incDir>
+            <pElem>${MAYA_LOCATION}/maya/include</pElem>
+          </incDir>
           <preprocessorList>
             <Elem>LINUX</Elem>
             <Elem>_BOOL</Elem>
             <Elem>INCLUDE_IOSTREAM</Elem>
             <Elem>REQUIRE_IOSTREAM</Elem>
           </preprocessorList>
-        </ccCompilerTool>
+        </ccTool>
         <linkerTool>
           <linkerAddLib>
-            <directoryPath>/usr/autodesk/maya/lib</directoryPath>
+            <pElem>${MAYA_LOCATION}/maya/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>OpenMaya</linkerLibLibItem>
@@ -53,15 +53,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="curvesGenNode.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="curvesGenNode.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="mainPlugin.cpp">
-        <itemTool>1</itemTool>
-      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -70,27 +61,27 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <cCompilerTool>
+        <cTool>
           <developmentMode>5</developmentMode>
-        </cCompilerTool>
-        <ccCompilerTool>
+        </cTool>
+        <ccTool>
           <developmentMode>6</developmentMode>
-          <includeDirectories>
-            <directoryPath>/usr/autodesk/maya/include</directoryPath>
-          </includeDirectories>
+          <incDir>
+            <pElem>${MAYA_LOCATION}/maya/include</pElem>
+          </incDir>
           <preprocessorList>
             <Elem>LINUX</Elem>
             <Elem>_BOOL</Elem>
             <Elem>INCLUDE_IOSTREAM</Elem>
             <Elem>REQUIRE_IOSTREAM</Elem>
           </preprocessorList>
-        </ccCompilerTool>
+        </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
         </fortranCompilerTool>
         <linkerTool>
           <linkerAddLib>
-            <directoryPath>/usr/autodesk/maya/lib</directoryPath>
+            <pElem>${MAYA_LOCATION}/maya/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>OpenMaya</linkerLibLibItem>
@@ -98,15 +89,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="curvesGenNode.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="curvesGenNode.h">
-        <itemTool>3</itemTool>
-      </item>
-      <item path="mainPlugin.cpp">
-        <itemTool>1</itemTool>
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>
