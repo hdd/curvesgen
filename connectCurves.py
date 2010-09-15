@@ -1,6 +1,20 @@
-#curves=cmd.ls(sl=1)
-#C=curveSystem(curves,50)
 
+"""
+creator function
+"""
+def createCurveSystem():
+	"""
+	select original curves and run this script
+	by default 50 curves was genereated
+	"""
+	curvesGenerated=50
+	curves=cmd.ls(sl=1)
+	C=curveSystem(curves,curvesGenerated)
+
+
+"""
+base class to create system
+"""
 
 class curveSystem:
 
@@ -34,13 +48,10 @@ class curveSystem:
                 # insert warning here
                 pass
 
-
-
     def createSubCurves(self):
-        numC=100
         CGName="curvesGen1"
         cmd.setAttr("%s.numCurves"%self.__nodeName,self.__numCurves)
-        for c in range(numC):
+        for c in range(self.__numCurves):
             C=cmd.curve(d=3,p=[0,0,0])
             Cs=cmd.listRelatives(C,s=1)[0]
             try:
